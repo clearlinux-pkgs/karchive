@@ -6,7 +6,7 @@
 #
 Name     : karchive
 Version  : 5.48.0
-Release  : 1
+Release  : 2
 URL      : https://download.kde.org/stable/frameworks/5.48/karchive-5.48.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.48/karchive-5.48.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.48/karchive-5.48.0.tar.xz.sig
@@ -19,6 +19,7 @@ BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
+BuildRequires : xz-dev
 BuildRequires : zlib-dev
 
 %description
@@ -63,7 +64,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531924531
+export SOURCE_DATE_EPOCH=1531924729
 mkdir clr-build
 pushd clr-build
 %cmake ..
@@ -71,7 +72,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1531924531
+export SOURCE_DATE_EPOCH=1531924729
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/karchive
 cp COPYING %{buildroot}/usr/share/doc/karchive/COPYING
@@ -85,6 +86,7 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
+/usr/include/KF5/KArchive/K7Zip
 /usr/include/KF5/KArchive/KAr
 /usr/include/KF5/KArchive/KArchive
 /usr/include/KF5/KArchive/KArchiveDirectory
@@ -96,6 +98,7 @@ popd
 /usr/include/KF5/KArchive/KTar
 /usr/include/KF5/KArchive/KZip
 /usr/include/KF5/KArchive/KZipFileEntry
+/usr/include/KF5/KArchive/k7zip.h
 /usr/include/KF5/KArchive/kar.h
 /usr/include/KF5/KArchive/karchive.h
 /usr/include/KF5/KArchive/karchive_export.h
