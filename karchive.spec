@@ -6,7 +6,7 @@
 #
 Name     : karchive
 Version  : 5.52.0
-Release  : 10
+Release  : 11
 URL      : https://download.kde.org/stable/frameworks/5.52/karchive-5.52.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.52/karchive-5.52.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.52/karchive-5.52.0.tar.xz.sig
@@ -29,14 +29,6 @@ Reading, creating, and manipulating file archives
 ## Introduction
 KArchive provides classes for easy reading, creation and manipulation of
 "archive" formats like ZIP and TAR.
-
-%package abi
-Summary: abi components for the karchive package.
-Group: Default
-
-%description abi
-abi components for the karchive package.
-
 
 %package data
 Summary: data components for the karchive package.
@@ -83,7 +75,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541865978
+export SOURCE_DATE_EPOCH=1542738444
 mkdir -p clr-build
 pushd clr-build
 %cmake ..
@@ -91,7 +83,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1541865978
+export SOURCE_DATE_EPOCH=1542738444
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp COPYING %{buildroot}/usr/share/package-licenses/karchive/COPYING
@@ -102,10 +94,6 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files abi
-%defattr(-,root,root,-)
-/usr/share/abi/libKF5Archive.so.5.52.0.abi
 
 %files data
 %defattr(-,root,root,-)
