@@ -1,0 +1,33 @@
+commit 90462cdbe3a5e4e95666a3db31a5e991a8c544a9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Thu Apr 18 00:24:45 2019 +0200
+
+    Fix memory leak when reading some tar files
+    
+    Summary:
+    Not sure if they are even malformed (don't know enough about the tar format), but oss-fuzz has produced a file where there's files and then there's the special . file (the root).
+    
+    Since the files prior to finding "." need to be child of something, we already created a rootdir, so when we find "." we need to delete the existing one.
+    
+    Reviewers: apol
+    
+    Reviewed By: apol
+    
+    Subscribers: apol, kde-frameworks-devel
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D20644
+
+diff --git a/src/karchive.cpp b/src/karchive.cpp
+index 5bf0af3..3a2d2be 100644
+--- a/src/karchive.cpp
++++ b/src/karchive.cpp
+@@ -599,6 +599,7 @@ void KArchive::setDevice(QIODevice *dev)
+ void KArchive::setRootDir(KArchiveDirectory *rootDir)
+ {
+     Q_ASSERT(!d->rootDir);   // Call setRootDir only once during parsing please ;)
++    delete d->rootDir;       // but if it happens, don't leak
+     d->rootDir = rootDir;
+ }
+ 

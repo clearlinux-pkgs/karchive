@@ -1,0 +1,36 @@
+commit 1252913062439df807e8ef4c63efa87089eb31d3
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 10 23:23:07 2019 +0200
+
+    KZip: fix Heap-use-after-free in broken files
+    
+    Summary:
+    when compiling with no asserts
+    
+    Broken oss-fuzz file doesn't crash anymore
+    
+    Reviewers: apol
+    
+    Reviewed By: apol
+    
+    Subscribers: dfaure, kde-frameworks-devel
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D20422
+
+diff --git a/src/kzip.cpp b/src/kzip.cpp
+index 4543c54..852df5b 100644
+--- a/src/kzip.cpp
++++ b/src/kzip.cpp
+@@ -714,6 +714,10 @@ bool KZip::openArchive(QIODevice::OpenMode mode)
+                 entryName = name.mid(pos + 1);
+             }
+             Q_ASSERT(!entryName.isEmpty());
++            if (entryName.isEmpty()) {
++                setErrorString(tr("Invalid ZIP file, found empty entry name"));
++                return false;
++            }
+ 
+             KArchiveEntry *entry;
+             if (isdir) {

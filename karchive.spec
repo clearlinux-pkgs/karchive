@@ -6,11 +6,11 @@
 #
 Name     : karchive
 Version  : 5.57.0
-Release  : 19
+Release  : 20
 URL      : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz
 Source99 : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz.sig
-Summary  : Qt 5 addon providing access to numerous types of archives
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: karchive-data = %{version}-%{release}
@@ -22,6 +22,12 @@ BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
+Patch1: 1252913062439df807e8ef4c63efa87089eb31d3.patch
+Patch2: 084dabd35bfb2da8f3993cf4ece19920ec53971b.patch
+Patch3: a027f56aa89e9cdfed57ee8d96f3420cab204d5d.patch
+Patch4: 8d72247daeb36087120046cc39817b7ce85a3703.patch
+Patch5: 90462cdbe3a5e4e95666a3db31a5e991a8c544a9.patch
+Patch6: 742a56ab3c11078abb65b0d3b7ba012849bec64e.patch
 
 %description
 # KArchive
@@ -70,21 +76,28 @@ license components for the karchive package.
 
 %prep
 %setup -q -n karchive-5.57.0
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1555322321
+export SOURCE_DATE_EPOCH=1556654453
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1555322321
+export SOURCE_DATE_EPOCH=1556654453
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp COPYING %{buildroot}/usr/share/package-licenses/karchive/COPYING

@@ -1,0 +1,39 @@
+commit 084dabd35bfb2da8f3993cf4ece19920ec53971b
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Tue Apr 16 19:58:19 2019 +0200
+
+    Fix null-dereference on malformed tar files
+    
+    Summary:
+    findOrCreate can return nullptr so fail if it does
+    
+    oss-fuzz #14275
+    
+    Reviewers: apol
+    
+    Reviewed By: apol
+    
+    Subscribers: kde-frameworks-devel
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D20605
+
+diff --git a/src/ktar.cpp b/src/ktar.cpp
+index afce3a4..c67c079 100644
+--- a/src/ktar.cpp
++++ b/src/ktar.cpp
+@@ -512,7 +512,12 @@ bool KTar::openArchive(QIODevice::OpenMode mode)
+                 QString path = QDir::cleanPath(name.left(pos));
+                 // Ensure container directory exists, create otherwise
+                 KArchiveDirectory *d = findOrCreate(path);
+-                d->addEntry(e);
++                if (d) {
++                    d->addEntry(e);
++                } else {
++                    delete e;
++                    return false;
++                }
+             }
+         } else {
+             //qCDebug(KArchiveLog) << "Terminating. Read " << n << " bytes, first one is " << buffer[0];

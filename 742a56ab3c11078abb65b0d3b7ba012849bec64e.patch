@@ -1,0 +1,36 @@
+commit 742a56ab3c11078abb65b0d3b7ba012849bec64e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Apr 21 18:08:17 2019 +0200
+
+    KTar: Protect against negative longlink sizes
+    
+    Summary:
+    Some of the negative values can cause uninitialize memory reads further down the code
+    
+    oss-fuzz #14381
+    
+    Reviewers: apol
+    
+    Reviewed By: apol
+    
+    Subscribers: kde-frameworks-devel
+    
+    Tags: #frameworks
+    
+    Differential Revision: https://phabricator.kde.org/D20702
+
+diff --git a/src/ktar.cpp b/src/ktar.cpp
+index 8890dd9..28aacf7 100644
+--- a/src/ktar.cpp
++++ b/src/ktar.cpp
+@@ -238,6 +238,10 @@ bool KTar::KTarPrivate::readLonglink(char *buffer, QByteArray &longlink)
+     qint64 size = QByteArray(buffer + 0x7c, 12).trimmed().toLongLong(nullptr, 8 /*octal*/);
+ 
+     size--;    // ignore trailing null
++    if (size < 0) {
++        qCWarning(KArchiveLog) << "Invalid longlink size" << size;
++        return false;
++    }
+     longlink.resize(size);
+     qint64 offset = 0;
+     while (size > 0) {
