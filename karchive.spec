@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : karchive
-Version  : 5.57.0
-Release  : 21
-URL      : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.57/karchive-5.57.0.tar.xz.sig
+Version  : 5.58.0
+Release  : 22
+URL      : https://download.kde.org/stable/frameworks/5.58/karchive-5.58.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.58/karchive-5.58.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.58/karchive-5.58.0.tar.xz.sig
 Summary  : Qt 5 addon providing access to numerous types of archives
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -22,12 +22,6 @@ BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
 BuildRequires : xz-dev
 BuildRequires : zlib-dev
-Patch1: 1252913062439df807e8ef4c63efa87089eb31d3.patch
-Patch2: 084dabd35bfb2da8f3993cf4ece19920ec53971b.patch
-Patch3: a027f56aa89e9cdfed57ee8d96f3420cab204d5d.patch
-Patch4: 8d72247daeb36087120046cc39817b7ce85a3703.patch
-Patch5: 90462cdbe3a5e4e95666a3db31a5e991a8c544a9.patch
-Patch6: 742a56ab3c11078abb65b0d3b7ba012849bec64e.patch
 
 %description
 # KArchive
@@ -50,6 +44,7 @@ Group: Development
 Requires: karchive-lib = %{version}-%{release}
 Requires: karchive-data = %{version}-%{release}
 Provides: karchive-devel = %{version}-%{release}
+Requires: karchive = %{version}-%{release}
 Requires: karchive = %{version}-%{release}
 
 %description dev
@@ -75,20 +70,14 @@ license components for the karchive package.
 
 
 %prep
-%setup -q -n karchive-5.57.0
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
+%setup -q -n karchive-5.58.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557001464
+export SOURCE_DATE_EPOCH=1557787608
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -103,7 +92,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557001464
+export SOURCE_DATE_EPOCH=1557787608
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp COPYING %{buildroot}/usr/share/package-licenses/karchive/COPYING
@@ -130,6 +119,7 @@ popd
 /usr/include/KF5/KArchive/KCompressionDevice
 /usr/include/KF5/KArchive/KFilterBase
 /usr/include/KF5/KArchive/KFilterDev
+/usr/include/KF5/KArchive/KRcc
 /usr/include/KF5/KArchive/KTar
 /usr/include/KF5/KArchive/KZip
 /usr/include/KF5/KArchive/KZipFileEntry
@@ -143,6 +133,7 @@ popd
 /usr/include/KF5/KArchive/kcompressiondevice.h
 /usr/include/KF5/KArchive/kfilterbase.h
 /usr/include/KF5/KArchive/kfilterdev.h
+/usr/include/KF5/KArchive/krcc.h
 /usr/include/KF5/KArchive/ktar.h
 /usr/include/KF5/KArchive/kzip.h
 /usr/include/KF5/KArchive/kzipfileentry.h
@@ -157,7 +148,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Archive.so.5
-/usr/lib64/libKF5Archive.so.5.57.0
+/usr/lib64/libKF5Archive.so.5.58.0
 
 %files license
 %defattr(0644,root,root,0755)
