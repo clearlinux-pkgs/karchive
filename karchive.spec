@@ -6,11 +6,11 @@
 #
 Name     : karchive
 Version  : 5.61.0
-Release  : 25
+Release  : 26
 URL      : https://download.kde.org/stable/frameworks/5.61/karchive-5.61.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.61/karchive-5.61.0.tar.xz
 Source1 : https://download.kde.org/stable/frameworks/5.61/karchive-5.61.0.tar.xz.sig
-Summary  : Qt 5 addon providing access to numerous types of archives
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: karchive-data = %{version}-%{release}
@@ -45,7 +45,6 @@ Requires: karchive-lib = %{version}-%{release}
 Requires: karchive-data = %{version}-%{release}
 Provides: karchive-devel = %{version}-%{release}
 Requires: karchive = %{version}-%{release}
-Requires: karchive = %{version}-%{release}
 
 %description dev
 dev components for the karchive package.
@@ -77,10 +76,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1565579794
+export SOURCE_DATE_EPOCH=1568074384
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -94,7 +92,7 @@ make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1565579794
+export SOURCE_DATE_EPOCH=1568074384
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp COPYING %{buildroot}/usr/share/package-licenses/karchive/COPYING
