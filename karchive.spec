@@ -6,7 +6,7 @@
 #
 Name     : karchive
 Version  : 5.75.0
-Release  : 42
+Release  : 43
 URL      : https://download.kde.org/stable/frameworks/5.75/karchive-5.75.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.75/karchive-5.75.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.75/karchive-5.75.0.tar.xz.sig
@@ -79,7 +79,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1602639071
+export SOURCE_DATE_EPOCH=1602687071
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -95,7 +95,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1602639071
+export SOURCE_DATE_EPOCH=1602687071
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp %{_builddir}/karchive-5.75.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
