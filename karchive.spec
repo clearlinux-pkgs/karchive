@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : karchive
-Version  : 5.90.0
-Release  : 55
-URL      : https://download.kde.org/stable/frameworks/5.90/karchive-5.90.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.90/karchive-5.90.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.90/karchive-5.90.0.tar.xz.sig
+Version  : 5.91.0
+Release  : 56
+URL      : https://download.kde.org/stable/frameworks/5.91/karchive-5.91.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.91/karchive-5.91.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.91/karchive-5.91.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 LGPL-2.0
@@ -72,15 +72,15 @@ license components for the karchive package.
 
 
 %prep
-%setup -q -n karchive-5.90.0
-cd %{_builddir}/karchive-5.90.0
+%setup -q -n karchive-5.91.0
+cd %{_builddir}/karchive-5.91.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641953944
+export SOURCE_DATE_EPOCH=1644794802
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -96,12 +96,12 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1641953944
+export SOURCE_DATE_EPOCH=1644794802
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
-cp %{_builddir}/karchive-5.90.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
-cp %{_builddir}/karchive-5.90.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/karchive/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
-cp %{_builddir}/karchive-5.90.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/karchive/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/karchive-5.91.0/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e
+cp %{_builddir}/karchive-5.91.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/karchive/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
+cp %{_builddir}/karchive-5.91.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/karchive/20079e8f79713dce80ab09774505773c926afa2a
 pushd clr-build
 %make_install
 popd
@@ -133,6 +133,7 @@ popd
 /usr/include/KF5/KArchive/kar.h
 /usr/include/KF5/KArchive/karchive.h
 /usr/include/KF5/KArchive/karchive_export.h
+/usr/include/KF5/KArchive/karchive_version.h
 /usr/include/KF5/KArchive/karchivedirectory.h
 /usr/include/KF5/KArchive/karchiveentry.h
 /usr/include/KF5/KArchive/karchivefile.h
@@ -143,7 +144,6 @@ popd
 /usr/include/KF5/KArchive/ktar.h
 /usr/include/KF5/KArchive/kzip.h
 /usr/include/KF5/KArchive/kzipfileentry.h
-/usr/include/KF5/karchive_version.h
 /usr/lib64/cmake/KF5Archive/KF5ArchiveConfig.cmake
 /usr/lib64/cmake/KF5Archive/KF5ArchiveConfigVersion.cmake
 /usr/lib64/cmake/KF5Archive/KF5ArchiveTargets-relwithdebinfo.cmake
@@ -154,7 +154,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Archive.so.5
-/usr/lib64/libKF5Archive.so.5.90.0
+/usr/lib64/libKF5Archive.so.5.91.0
 
 %files license
 %defattr(0644,root,root,0755)
