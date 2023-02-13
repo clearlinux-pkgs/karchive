@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : karchive
-Version  : 5.102.0
-Release  : 67
-URL      : https://download.kde.org/stable/frameworks/5.102/karchive-5.102.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.102/karchive-5.102.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.102/karchive-5.102.0.tar.xz.sig
+Version  : 5.103.0
+Release  : 68
+URL      : https://download.kde.org/stable/frameworks/5.103/karchive-5.103.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.103/karchive-5.103.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.103/karchive-5.103.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 LGPL-2.0
@@ -75,15 +75,15 @@ license components for the karchive package.
 
 
 %prep
-%setup -q -n karchive-5.102.0
-cd %{_builddir}/karchive-5.102.0
+%setup -q -n karchive-5.103.0
+cd %{_builddir}/karchive-5.103.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673887523
+export SOURCE_DATE_EPOCH=1676301265
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -99,7 +99,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1673887523
+export SOURCE_DATE_EPOCH=1676301265
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp %{_builddir}/karchive-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -116,6 +116,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/locale/ca/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ca@valencia/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/cs/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/de/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/en_GB/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/es/LC_MESSAGES/karchive5_qt.qm
@@ -131,6 +132,7 @@ popd
 /usr/share/locale/tr/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/uk/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/zh_CN/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/zh_TW/LC_MESSAGES/karchive5_qt.qm
 /usr/share/qlogging-categories5/karchive.categories
 /usr/share/qlogging-categories5/karchive.renamecategories
 
@@ -174,7 +176,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Archive.so.5
-/usr/lib64/libKF5Archive.so.5.102.0
+/usr/lib64/libKF5Archive.so.5.103.0
 
 %files license
 %defattr(0644,root,root,0755)
