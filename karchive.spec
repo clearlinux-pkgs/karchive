@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : karchive
-Version  : 5.104.0
-Release  : 70
-URL      : https://download.kde.org/stable/frameworks/5.104/karchive-5.104.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.104/karchive-5.104.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.104/karchive-5.104.0.tar.xz.sig
+Version  : 5.105.0
+Release  : 71
+URL      : https://download.kde.org/stable/frameworks/5.105/karchive-5.105.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.105/karchive-5.105.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.105/karchive-5.105.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 LGPL-2.0
@@ -19,7 +19,6 @@ Requires: karchive-lib = %{version}-%{release}
 Requires: karchive-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
-BuildRequires : buildreq-qmake
 BuildRequires : bzip2-dev
 BuildRequires : extra-cmake-modules-data
 BuildRequires : pkg-config
@@ -76,15 +75,15 @@ license components for the karchive package.
 
 
 %prep
-%setup -q -n karchive-5.104.0
-cd %{_builddir}/karchive-5.104.0
+%setup -q -n karchive-5.105.0
+cd %{_builddir}/karchive-5.105.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1679512643
+export SOURCE_DATE_EPOCH=1681138323
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -100,7 +99,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1679512643
+export SOURCE_DATE_EPOCH=1681138323
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp %{_builddir}/karchive-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -115,21 +114,26 @@ popd
 
 %files data
 %defattr(-,root,root,-)
+/usr/share/locale/ar/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ca/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ca@valencia/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/cs/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/de/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/en_GB/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/es/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/fi/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/fr/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/ia/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/it/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ja/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ka/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/lt/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/nl/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/nn/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/pl/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/pt/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ru/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/sk/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/sl/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/tr/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/uk/LC_MESSAGES/karchive5_qt.qm
@@ -178,7 +182,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Archive.so.5
-/usr/lib64/libKF5Archive.so.5.104.0
+/usr/lib64/libKF5Archive.so.5.105.0
 
 %files license
 %defattr(0644,root,root,0755)
