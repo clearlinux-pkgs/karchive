@@ -7,7 +7,7 @@
 #
 Name     : karchive
 Version  : 5.106.0
-Release  : 72
+Release  : 73
 URL      : https://download.kde.org/stable/frameworks/5.106/karchive-5.106.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.106/karchive-5.106.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.106/karchive-5.106.0.tar.xz.sig
@@ -83,7 +83,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1684794541
+export SOURCE_DATE_EPOCH=1685561066
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -116,7 +116,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1684794541
+export SOURCE_DATE_EPOCH=1685561066
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp %{_builddir}/karchive-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -165,7 +165,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Archive.so
 /usr/include/KF5/KArchive/K7Zip
 /usr/include/KF5/KArchive/KAr
 /usr/include/KF5/KArchive/KArchive
@@ -203,7 +202,6 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Archive.so.5
 /V3/usr/lib64/libKF5Archive.so.5.106.0
 /usr/lib64/libKF5Archive.so.5
 /usr/lib64/libKF5Archive.so.5.106.0
