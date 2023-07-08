@@ -6,11 +6,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : karchive
-Version  : 5.107.0
-Release  : 74
-URL      : https://download.kde.org/stable/frameworks/5.107/karchive-5.107.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.107/karchive-5.107.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.107/karchive-5.107.0.tar.xz.sig
+Version  : 5.108.0
+Release  : 75
+URL      : https://download.kde.org/stable/frameworks/5.108/karchive-5.108.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.108/karchive-5.108.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.108/karchive-5.108.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-2-Clause CC0-1.0 LGPL-2.0
@@ -75,15 +75,15 @@ license components for the karchive package.
 
 
 %prep
-%setup -q -n karchive-5.107.0
-cd %{_builddir}/karchive-5.107.0
+%setup -q -n karchive-5.108.0
+cd %{_builddir}/karchive-5.108.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686521755
+export SOURCE_DATE_EPOCH=1688856744
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -116,7 +116,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1686521755
+export SOURCE_DATE_EPOCH=1688856744
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/karchive
 cp %{_builddir}/karchive-%{version}/LICENSES/BSD-2-Clause.txt %{buildroot}/usr/share/package-licenses/karchive/680ed9349d3d12bd39ddd36e8c4bc6b1b0cb1c0e || :
@@ -144,6 +144,7 @@ popd
 /usr/share/locale/es/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/fi/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/fr/LC_MESSAGES/karchive5_qt.qm
+/usr/share/locale/gl/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/ia/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/id/LC_MESSAGES/karchive5_qt.qm
 /usr/share/locale/it/LC_MESSAGES/karchive5_qt.qm
@@ -203,9 +204,9 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libKF5Archive.so.5.107.0
+/V3/usr/lib64/libKF5Archive.so.5.108.0
 /usr/lib64/libKF5Archive.so.5
-/usr/lib64/libKF5Archive.so.5.107.0
+/usr/lib64/libKF5Archive.so.5.108.0
 
 %files license
 %defattr(0644,root,root,0755)
